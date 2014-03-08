@@ -6,7 +6,7 @@
 /*****************************************************************************/
 
 // Number of RGB LEDs in strand:
-int nLEDs = 32;
+unsigned int nLEDs = 32;
 
 // Chose 2 pins for output; can be any valid output pins:
 int dataPin  = 2;
@@ -87,7 +87,7 @@ bool landed(accelerometer_values &accel)
 
 void blank_strip()
 {
-  for (int i=0; i < strip.numPixels(); i++) {
+  for (unsigned int i=0; i < strip.numPixels(); i++) {
     strip.setPixelColor(i, 0);
   }  
 }
@@ -111,7 +111,7 @@ void simple_anim()
 
 void set_strip_color(uint32_t color)
 {
-  for (int i=0; i < strip.numPixels(); i++) {
+  for (unsigned int i=0; i < strip.numPixels(); i++) {
     strip.setPixelColor(i, color);
   }
 }
@@ -139,7 +139,7 @@ return;
     strip.show();
     jump_flag = true;
   } else if (landed(accel) && jump_flag) {
-    int col, i;
+    unsigned int col, i;
     blank_strip();
     for (col=40; col >= 0; --col){
       for (i=0; i < strip.numPixels(); i++) {
@@ -175,7 +175,7 @@ return;
 }
 
 void rainbow(uint8_t wait) {
-  int i, j;
+  unsigned int i, j;
    
   for (j=0; j < 384; j++) {     // 3 cycles of all 384 colors in the wheel
     for (i=0; i < strip.numPixels(); i++) {
@@ -206,7 +206,7 @@ void rainbowCycle(uint8_t wait) {
 
 // Fill the dots progressively along the strip.
 void colorWipe(uint32_t c, uint8_t wait) {
-  int i;
+  unsigned int i;
 
   for (i=0; i < strip.numPixels(); i++) {
       strip.setPixelColor(i, c);
@@ -217,7 +217,7 @@ void colorWipe(uint32_t c, uint8_t wait) {
 
 // Chase one dot down the full strip.
 void colorChase(uint32_t c, uint8_t wait) {
-  int i;
+  unsigned int i;
 
   // Start by turning all pixels off:
   for(i=0; i<strip.numPixels(); i++) strip.setPixelColor(i, 0);
